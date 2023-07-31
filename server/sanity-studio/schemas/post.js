@@ -29,7 +29,20 @@ export default {
         {
           title: 'Comment',
           name: 'comment',
-          type: 'string',
+          type: 'document',
+          fields: [
+            {
+              title: 'Author',
+              name: 'author',
+              type: 'reference',
+              to: [{type: 'user'}],
+            },
+            {
+              title: 'Comment',
+              name: 'comment',
+              type: 'string',
+            },
+          ],
         },
       ],
     },
