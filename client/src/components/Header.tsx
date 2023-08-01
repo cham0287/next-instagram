@@ -8,6 +8,7 @@ import NewIcon from './ui/icons/NewIcon';
 import NewFillIcon from './ui/icons/NewFillIcon';
 import SearchIcon from './ui/icons/SearchIcon';
 import SearchFillIcon from './ui/icons/SearchFillIcon';
+import ColorButton from './ui/ColorButton';
 
 const menu = [
   {
@@ -30,20 +31,18 @@ const menu = [
 const Header = () => {
   const pathname = usePathname();
   return (
-    <div className='flex items-center justify-between mx-auto p-4 border border-b-gray-300 border-b-4'>
+    <div className='flex items-center justify-between px-6'>
       <h1 className='text-3xl font-bold'>Instantgram</h1>
-      <ul className='flex items-center gap-6 text-4xl'>
-        {menu.map(({ href, icon, clickedIcon }) => (
-          <li key={href}>
-            <Link href={href}>{href === pathname ? clickedIcon : icon}</Link>
-          </li>
-        ))}
-        <li>
-          <p className='px-1 py-2 border-4 border-purple-500 rounded-md text-xl'>
-            Sign in
-          </p>
-        </li>
-      </ul>
+      <nav>
+        <ul className='flex items-center gap-4 p-4'>
+          {menu.map(({ href, icon, clickedIcon }) => (
+            <li key={href}>
+              <Link href={href}>{href === pathname ? clickedIcon : icon}</Link>
+            </li>
+          ))}
+          <ColorButton text='Sign in' onClick={() => {}} />
+        </ul>
+      </nav>
     </div>
   );
 };
