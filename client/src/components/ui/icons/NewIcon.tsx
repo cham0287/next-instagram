@@ -1,6 +1,6 @@
 import { BsPlusSquare } from 'react-icons/bs';
-const HomeIcon = () => {
+const NewIcon = () => {
   return <BsPlusSquare className='w-7 h-7' />;
 };
 
-export default HomeIcon;
+export default NewIcon;

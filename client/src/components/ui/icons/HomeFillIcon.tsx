@@ -1,7 +1,7 @@
 import { AiFillHome } from 'react-icons/ai';
 
-const HomeIcon = () => {
+const HomeFillIcon = () => {
   return <AiFillHome className='w-7 h-7' />;
 };
 
-export default HomeIcon;
+export default HomeFillIcon;

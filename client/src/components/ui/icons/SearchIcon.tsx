@@ -1,6 +1,6 @@
 import { RiSearchLine } from 'react-icons/ri';
-const HomeIcon = () => {
+const SearchIcon = () => {
   return <RiSearchLine className='w-6 h-6' />;
 };
 
-export default HomeIcon;
+export default SearchIcon;
