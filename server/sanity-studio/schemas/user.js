@@ -14,6 +14,11 @@ export default {
       type: 'string',
     },
     {
+      title: 'Email',
+      name: 'email',
+      type: 'string',
+    },
+    {
       title: 'Image',
       name: 'image',
       type: 'string',
@@ -21,6 +26,18 @@ export default {
     {
       title: 'Following',
       name: 'following',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'user'}],
+        },
+      ],
+      validation: (Rule) => Rule.unique(),
+    },
+    {
+      title: 'Followers',
+      name: 'followers',
       type: 'array',
       of: [
         {
@@ -43,4 +60,10 @@ export default {
       validation: (Rule) => Rule.unique(),
     },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'username',
+    },
+  },
 }

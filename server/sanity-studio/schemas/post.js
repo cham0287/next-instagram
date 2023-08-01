@@ -10,6 +10,11 @@ export default {
       to: [{type: 'user'}],
     },
     {
+      title: 'Photo',
+      name: 'photo',
+      type: 'image',
+    },
+    {
       title: 'Likes',
       name: 'likes',
       type: 'array',
@@ -47,4 +52,20 @@ export default {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: 'comments.0.comment',
+      authorName: 'author.name',
+      authorUsername: 'author.username',
+      media: 'photo',
+    },
+    prepare(selection) {
+      const {title, authorName, authorUsername, media} = selection
+      return {
+        title,
+        subtitle: `by ${authorName} (${authorUsername})`,
+        media,
+      }
+    },
+  },
 }
