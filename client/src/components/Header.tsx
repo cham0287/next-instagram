@@ -1,7 +1,9 @@
 'use client';
-import Link from 'next/link';
 import React from 'react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useSession, signIn, signOut } from 'next-auth/react';
+
 import HomeIcon from './ui/icons/HomeIcon';
 import HomeFillIcon from './ui/icons/HomeFillIcon';
 import NewIcon from './ui/icons/NewIcon';
@@ -30,6 +32,8 @@ const menu = [
 
 const Header = () => {
   const pathname = usePathname();
+  const { data: session } = useSession();
+
   return (
     <div className='flex items-center justify-between px-6'>
       <h1 className='text-3xl font-bold'>Instantgram</h1>
@@ -40,7 +44,11 @@ const Header = () => {
               <Link href={href}>{href === pathname ? clickedIcon : icon}</Link>
             </li>
           ))}
-          <ColorButton text='Sign in' onClick={() => {}} />
+          {session ? (
+            <ColorButton text='Sign out' onClick={() => signOut()} />
+          ) : (
+            <ColorButton text='Sign in' onClick={() => signIn()} />
+          )}
         </ul>
       </nav>
     </div>
