@@ -11,6 +11,7 @@ import NewFillIcon from './ui/icons/NewFillIcon';
 import SearchIcon from './ui/icons/SearchIcon';
 import SearchFillIcon from './ui/icons/SearchFillIcon';
 import ColorButton from './ui/ColorButton';
+import Avatar from './Avatar';
 
 const menu = [
   {
@@ -33,6 +34,7 @@ const menu = [
 const Header = () => {
   const pathname = usePathname();
   const { data: session } = useSession();
+  const user = session?.user;
 
   return (
     <div className='flex items-center justify-between px-6'>
@@ -44,11 +46,20 @@ const Header = () => {
               <Link href={href}>{href === pathname ? clickedIcon : icon}</Link>
             </li>
           ))}
-          {session ? (
-            <ColorButton text='Sign out' onClick={() => signOut()} />
-          ) : (
-            <ColorButton text='Sign in' onClick={() => signIn()} />
+          {user && (
+            <li>
+              <Link href={`/user/${user.username}`}>
+                <Avatar image={user.image} />
+              </Link>
+            </li>
           )}
+          <li>
+            {session ? (
+              <ColorButton text='Sign out' onClick={() => signOut()} />
+            ) : (
+              <ColorButton text='Sign in' onClick={() => signIn()} />
+            )}
+          </li>
         </ul>
       </nav>
     </div>
