@@ -1,6 +1,14 @@
-import React from 'react';
+'use client';
+import useSWR from 'swr';
+import { User } from '@/model/user';
 
-const FollowingBar = () => {
+interface Props {
+  user: User;
+}
+
+const FollowingBar = ({ user }: Props) => {
+  const { data, isLoading, error } = useSWR('/api/hello');
+  console.log(data);
   return <p>followingBar</p>;
 };
 
