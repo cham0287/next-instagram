@@ -7,7 +7,7 @@ interface Props {
 }
 
 const FollowingBar = ({ user }: Props) => {
-  const { data, isLoading, error } = useSWR('/api/hello');
+  const { data, isLoading, error } = useSWR('/api/me');
   console.log(data);
   return <p>followingBar</p>;
 };
