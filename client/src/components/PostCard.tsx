@@ -4,7 +4,7 @@ import Image from 'next/image';
 import HeartIcon from './ui/icons/HeartIcon';
 import BookmarkIcon from './ui/icons/BookmarkIcon';
 import { parseDate } from '@/util/date';
-import SmileIcon from './ui/icons/SmileIcon';
+import CommentForm from './CommentForm';
 
 interface Props {
   post: SimplePost;
@@ -41,15 +41,7 @@ const PostCard = ({
         <p className='text-xs text-neutral-500 uppercase my-2'>
           {parseDate(createdAt)}
         </p>
-        <form className='flex items-center border-t border-neutral-300'>
-          <SmileIcon />
-          <input
-            className='w-full ml-2 border-none outline-none p-3'
-            type='text'
-            placeholder='Add a comment...'
-          />
-          <button className='font-bold text-sky-500 ml-2'>Post</button>
-        </form>
+        <CommentForm />
       </div>
     </article>
   );
