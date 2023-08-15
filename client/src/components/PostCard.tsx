@@ -6,10 +6,12 @@ import ActionBar from './ActionBar';
 
 interface Props {
   post: SimplePost;
+  priority?: boolean;
 }
 
 const PostCard = ({
   post: { userImage, username, image, createdAt, likes, text },
+  priority = false,
 }: Props) => {
   return (
     <article className='rounded-lg shadow=md border border-gray'>
@@ -23,6 +25,7 @@ const PostCard = ({
         alt={`photo by ${username}`}
         width={500}
         height={500}
+        priority={priority}
       />
       <ActionBar
         likes={likes}
