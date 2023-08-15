@@ -9,14 +9,14 @@ const PostList = () => {
   return (
     <section>
       {isLoading && (
-        <div>
+        <div className='text-center mt-32'>
           <GridLoader color='red' />
         </div>
       )}
       {posts && (
         <ul>
           {posts.map((post) => (
-            <li key={post.id}>
+            <li key={post.id} className='mb-4'>
               {post.text}
               <PostCard post={post} />
             </li>
