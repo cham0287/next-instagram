@@ -1,8 +1,8 @@
 'use client';
 import { SimplePost } from '@/model/post';
-import { GridLoader } from 'react-spinners';
 import useSWR from 'swr';
 import PostCard from './PostCard';
+import GridSpinner from './ui/GridSpinner';
 
 const PostList = () => {
   const { data: posts, isLoading, error } = useSWR<SimplePost[]>('/api/posts');
@@ -10,15 +10,15 @@ const PostList = () => {
     <section>
       {isLoading && (
         <div className='text-center mt-32'>
-          <GridLoader color='red' />
+          <GridSpinner color='red' />
         </div>
       )}
       {posts && (
         <ul>
-          {posts.map((post) => (
+          {posts.map((post, index) => (
             <li key={post.id} className='mb-4'>
               {post.text}
-              <PostCard post={post} />
+              <PostCard post={post} priority={index < 2} />
             </li>
           ))}
         </ul>
