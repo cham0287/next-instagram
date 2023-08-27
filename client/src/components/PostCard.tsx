@@ -7,16 +7,15 @@ import ActionBar from './ActionBar';
 import ModalPortal from './ui/ModalPortal';
 import { useState } from 'react';
 import PostModal from './PostModal';
+import PostDetail from './PostDetail';
 
 interface Props {
   post: SimplePost;
   priority?: boolean;
 }
 
-const PostCard = ({
-  post: { userImage, username, image, createdAt, likes, text },
-  priority = false,
-}: Props) => {
+const PostCard = ({ post, priority = false }: Props) => {
+  const { userImage, username, image, createdAt, likes, text } = post;
   const [openModal, setOpenModal] = useState(false);
 
   return (
@@ -44,7 +43,7 @@ const PostCard = ({
       {openModal && (
         <ModalPortal>
           <PostModal onClose={() => setOpenModal(false)}>
-            <p>post detail page</p>
+            <PostDetail post={post} />
           </PostModal>
         </ModalPortal>
       )}
