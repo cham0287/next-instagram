@@ -8,6 +8,7 @@ import ModalPortal from './ui/ModalPortal';
 import { useState } from 'react';
 import PostModal from './PostModal';
 import PostDetail from './PostDetail';
+import PostUserAvatar from './PostUserAvatar';
 
 interface Props {
   post: SimplePost;
@@ -20,10 +21,7 @@ const PostCard = ({ post, priority = false }: Props) => {
 
   return (
     <article className='rounded-lg shadow=md border border-gray'>
-      <div className='flex items-center p-2'>
-        <Avatar image={userImage} size='medium' highlight />
-        <span className='text-gray-900 font-bold ml-2'>{username}</span>
-      </div>
+      <PostUserAvatar image={userImage} username={username} />
       <Image
         className='w-full object-cover aspect-square'
         src={image}
