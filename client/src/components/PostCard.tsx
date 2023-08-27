@@ -10,6 +10,7 @@ import PostModal from './PostModal';
 import PostDetail from './PostDetail';
 import PostUserAvatar from './PostUserAvatar';
 
+
 interface Props {
   post: SimplePost;
   priority?: boolean;
