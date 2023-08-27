@@ -1,8 +1,12 @@
+'use client';
 import { SimplePost } from '@/model/post';
 import Avatar from './Avatar';
 import Image from 'next/image';
 import CommentForm from './CommentForm';
 import ActionBar from './ActionBar';
+import ModalPortal from './ui/ModalPortal';
+import { useState } from 'react';
+import PostModal from './PostModal';
 
 interface Props {
   post: SimplePost;
@@ -13,6 +17,8 @@ const PostCard = ({
   post: { userImage, username, image, createdAt, likes, text },
   priority = false,
 }: Props) => {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <article className='rounded-lg shadow=md border border-gray'>
       <div className='flex items-center p-2'>
@@ -26,6 +32,7 @@ const PostCard = ({
         width={500}
         height={500}
         priority={priority}
+        onClick={() => setOpenModal(true)}
       />
       <ActionBar
         likes={likes}
@@ -34,6 +41,13 @@ const PostCard = ({
         createdAt={createdAt}
       />
       <CommentForm />
+      {openModal && (
+        <ModalPortal>
+          <PostModal onClose={() => setOpenModal(false)}>
+            <p>post detail page</p>
+          </PostModal>
+        </ModalPortal>
+      )}
     </article>
   );
 };
