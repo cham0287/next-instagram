@@ -18,7 +18,7 @@ const PostModal = ({ onClose, children }: Props) => {
       <button className='fixed top-0 right-0 p-8 text-white'>
         <CloseIcon />
       </button>
-      {children}
+      <div className='bg-white w-4/5 h-3/5 max-w-7xl'>{children}</div>
     </section>
   );
   return <div></div>;
