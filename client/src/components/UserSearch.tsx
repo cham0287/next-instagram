@@ -4,6 +4,7 @@ import { ProfileUser } from '@/model/user';
 import { FormEvent, useState } from 'react';
 import useSWR from 'swr';
 import GridSpinner from './ui/GridSpinner';
+import UserCard from './UserCard';
 
 const UserSearch = () => {
   const [keyword, setKeyword] = useState('bob');
@@ -37,7 +38,7 @@ const UserSearch = () => {
         {users &&
           users.map((user) => (
             <li key={user.username}>
-              <p>{user.username}</p>
+              <UserCard user={user} />
             </li>
           ))}
       </ul>
