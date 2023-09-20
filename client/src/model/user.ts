@@ -7,13 +7,17 @@ export interface User {
 
 export type SimpleUser = Pick<User, 'username' | 'image'>;
 
-export interface DetailUser extends User {
+export interface HomeUser extends User {
   following: SimpleUser[];
   followers: SimpleUser[];
   bookmarks: string[];
 }
 
-export interface ProfileUser extends User {
+export interface SearchUser extends User {
   following: number;
   followers: number;
 }
+
+export type ProfileUser = SearchUser & {
+  posts: number;
+};
